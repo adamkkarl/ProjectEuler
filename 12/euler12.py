@@ -52,8 +52,8 @@ def main():
     divisors = [0,1,2]
     length = 3
     
-    a0 = int(input())
-    for testNumber in range(a0):
+    t = int(input())
+    for _ in range(a0):
         n = int(input())
         
         found = False
@@ -74,4 +74,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-#    print(findDivisors(36))
