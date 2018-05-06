@@ -53,7 +53,7 @@ def main():
     length = 3
     
     t = int(input())
-    for _ in range(a0):
+    for _ in range(t):
         n = int(input())
         
         found = False
