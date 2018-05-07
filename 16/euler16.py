@@ -2,6 +2,7 @@
 
 __author__ = "Adam Karl"
 """What is the sum of digits of the number 2**N"""
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler016
 #First line has T the number of test cases, followed by T lines of N values
 #Constraints: 1 <= T <= 100; 1 <= N <= 10 000
 
