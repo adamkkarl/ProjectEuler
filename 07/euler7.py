@@ -2,6 +2,7 @@
 
 __author__ = "Adam Karl"
 """What is the Nth prime number"""
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler008
 #First line has T the number of test cases, followed by T lines with values for N
 #Constraints: 1 <= T <= 1000; 1 <= N <= 10 000
 #April 2018
