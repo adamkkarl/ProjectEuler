@@ -12,36 +12,22 @@ coinValues = [1, 2, 5, 10, 20, 50, 100, 200]
 MAXIMUM = 100001
 MOD = 1000000007
 
-def calculateCombinations(coinIndex, n):
-    """Generate memoization where memo[7][n] contains the number of ways to make n pence of change"""
+def generateMemo():
+    """fill memo by passing over it once for each progressively larger coin value to find combinations
+    for N using up to each maximum coin"""
     global memo
-    if coinIndex == 0: #always 1 way to make change if you only have 1p coins
-        return 1
-    if memo[coinIndex][n] != 0: #already in memo
-        return memo[coinIndex][n]
-    coinValue = coinValues[coinIndex]
-    test_n = n
-    combs = 0
-    while test_n >= 0:
-        combs += calculateCombinations(coinIndex - 1, test_n)
-        if combs > MOD:
-            combs %= MOD
-        test_n -= coinValue
-    memo[coinIndex][n] = combs #update memo
-    return combs
-
-def initializeMemo():
-    """initialize memo with 0s, except first row which is all 1s"""
-    global memo
-    memo = [[0 for i in range(MAXIMUM)] for j in range(8)]
-    memo[0] = [1 for i in range(MAXIMUM)]
+    memo = [1 for i in range(MAXIMUM)] #all ones for coinValue = 1
+    for coinIndex in range(1, 8):
+        coinValue = coinValues[coinIndex]
+        for n in range(coinValue, MAXIMUM):
+            memo[n] = (memo[n] + memo[n - coinValue]) % MOD
 
 def main():
-    initializeMemo()
+    generateMemo()
     t = int(input())
     for _ in range(t):
         n = int(input())
-        result = calculateCombinations(7, n)
+        result = memo[n]
         print(result)
 
 if __name__ == "__main__":
