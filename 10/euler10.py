@@ -6,23 +6,25 @@ __author__ = "Adam Karl"
 #First line T is number of test cases, followed by T lines of N values
 #Constraints: 1 <= T <= 1000; 1 <= N <= 10**6
 
-import sys
 from math import sqrt
 
+MAXIMUM = 10000001
+isPrime = []
+sums = []
 
 def sieve():
     """fills isPrime array with booleans for whether the number at isPrime[i] is prime or not"""
     """uses a process known as the sieve of eratosthenes"""
-    isPrime = [True] * 1000001 #for numbers from 0 to 100000 inclusive
-    #print(isPrime)
+    global isPrime
+    isPrime = [True for i in range(MAXIMUM)] #for numbers from 0 to 100000 inclusive
     isPrime[0] = False
     isPrime[1] = False
     index = 2
-    while index <= 1000000:
+    while index < MAXIMUM:
         if isPrime[index]: #found a prime number
             multiplier = 2
-            while index * multiplier <= 1000000:
-                isPrime[index*multiplier] = False #all multiples of the prime are not prime
+            while index * multiplier < MAXIMUM:
+                isPrime[index * multiplier] = False #all multiples of the prime are not prime
                 multiplier += 1
         index += 1
     return isPrime
@@ -30,9 +32,10 @@ def sieve():
 def generate_list_of_sums(isPrime):
     """given a list of 100 000 booleans on whether an index is prime or not,
     return a list of 100 000 sums of all primes <= index"""
-    sums = [0] * 1000001
-    for index in range(1,1000001):
-        new_sum = sums[index-1]
+    global sums
+    sums = [0 for i in range(MAXIMUM)]
+    for index in range(1, MAXIMUM):
+        new_sum = sums[index - 1]
         if isPrime[index]:
             new_sum += index
         sums[index] = new_sum
@@ -41,12 +44,12 @@ def generate_list_of_sums(isPrime):
 
 def main():
     isPrime = sieve() #generate isPrime
-    listOfSums = generate_list_of_sums(isPrime)
+    generate_list_of_sums(isPrime)
     t = int(input().strip())
     for _ in range(t):
         n = int(input().strip())
 
-        print(str(listOfSums[n]))
+        print(sums[n])
 
 if __name__ == "__main__":
     main()
