@@ -32,6 +32,15 @@ def generateAbundants():
         if isAbundant(testAbundant):
             abundants.append(testAbundant)
     abundants.sort()
+
+def inAbundantsList(n):
+    """Return True if item is in list of abundants, False otherwise"""
+    for a in abundants:
+        if a == n:
+            return True
+        if a > n:
+            return False
+    return False
         
 def canBeWritten(n):
     """Return True if N can be written as the sum of 2 abundant numbers, False if it cannot"""
@@ -39,15 +48,11 @@ def canBeWritten(n):
         return True
     if n < 24:
         return False
-    max_index = 0
-    length = len(abundants)
-    while max_index + 1 < length and abundants[max_index] < n:
-        max_index += 1
-    
-    for a in range(max_index):
-        for b in range(a, max_index):
-            if abundants[a] + abundants[b] == n:
-                return True
+    for a in abundants:
+        if a > n:
+            return False
+        if inAbundantsList(n - a):
+            return True
     return False
 
 
@@ -64,4 +69,11 @@ def main():
         
 
 if __name__ == "__main__":
-    main()
+#    main()
+    generateAbundants()
+    my_sum = 0
+    for i in range(28124):
+        if not canBeWritten(i):
+            print(i)
+            my_sum += i
+    print(my_sum)
