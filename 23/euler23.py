@@ -10,6 +10,7 @@ from math import sqrt, ceil
 
 abundants = []
 sums = []
+numbers = []
 
 def isAbundant(n):
     """Return True if n is an abundant number, False if it is not"""
@@ -66,14 +67,33 @@ def main():
             print("YES")
         else:
             print("NO")
+def delDupes():
+    global abundants
+    my_list = []
+    my_list.append(abundants[-1])
+    for a in abundants:
+        if a != my_list[-1]:
+            my_list.append(a)
+    abundants = my_list
         
+def generateNums():
+    global numbers
+    numbers = [i for i in range(28124)]
+
+def spam():
+    global numbers
+    for i in range(len(abundants)):
+        for j in range(i, len(abundants)):
+            c = abundants[i] + abundants[j]
+            if c > 28123:
+                break
+            else:
+                numbers[c] = 0
 
 if __name__ == "__main__":
 #    main()
+    generateNums()
     generateAbundants()
-    my_sum = 0
-    for i in range(28124):
-        if not canBeWritten(i):
-            print(i)
-            my_sum += i
-    print(my_sum)
+    delDupes()
+    spam()
+    print(sum(numbers))
