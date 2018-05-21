@@ -9,13 +9,13 @@ __author__ = "Adam Karl"
 digitFactorials = []
 
 def curiousNumbersUnderN(n):
+    """Return a sum of all numbers that evenly divide the sum of the factorial of their digits"""
     sumCurious = 0
     for i in range(10, n):
         string = str(i)
         digitFactorialSum = 0
         for c in string:
             digitFactorialSum += digitFactorials[int(c)]
-#        print(i, digitFactorialSum)
         if digitFactorialSum % i == 0:
             sumCurious += i
     return sumCurious
