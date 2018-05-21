@@ -19,8 +19,6 @@ def curiousNumbersUnderN(n):
         if digitFactorialSum % i == 0:
             sumCurious += i
     return sumCurious
-        
-
 
 def main():
     global digitFactorials
