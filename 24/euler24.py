@@ -26,34 +26,23 @@ def printChars(letters, n):
             print(str(letters[1]) + str(letters[0]),end="")
         else:
             print("ERROR" + str(n))
-#        elif n == 0:
-#            print(str(lerrers[0]) + str(letters[1]))
-    
-        
     else:
     
         length = len(letters) - 1 
-       # print(length)
         combinationsForRestOfDigits = factorials[length-1]
         index = 0
 
         while n > combinationsForRestOfDigits:
             index += 1
             n -= combinationsForRestOfDigits
-
-#        print(index,end=" ")
-#        print(letters)
-
         print(letters.pop(index),end="") #remove from list and print 
-   #     n -= index * combinationsForRestOfDigits
         printChars(letters, n)
 
 
 def main():
     generateFactorials()
-#    print(factorials)
     t = int(input())
-    for a0 in range(t):
+    for _d in range(t):
         letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m']
         n = int(input()) 
         printChars(letters, n)
