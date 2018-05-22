@@ -58,5 +58,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-#    print(incorrectSimplify(49, 98))
-#    print(simplify(49, 98))
