@@ -10,7 +10,6 @@ def numDistinct(a, b):
         for j in range(2, b + 1):
             powList.append(pow(i, j))
     powList.sort()
-    print(powList)
     numDistinct = 1
     index = 1
     while index < len(powList):
