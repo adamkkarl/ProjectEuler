@@ -1,10 +1,10 @@
 #!/bin/python3
 
 __author__ = "Adam Karl"
-"""Find the sum of the only 11 primes that are truncatable from left to right and right to left"""
-#
-#First line has N K
-#Constraints: 10 <= N <= 10**6; 2 <= K <= 9
+"""Find the sum of all truncatable primes below N that are truncatable primes from left to right and right to left"""
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler037
+#Input: N
+#Constraints: 100 <= N <= 10**6
 
 isPrime = []
 
@@ -43,9 +43,7 @@ def sumTruncPrimes(n):
                 if not isPrime[int(a)]:
                     allPrime = False
             if allPrime:
-                print(i)
                 truncPrimeSum += i
-    print()
     return truncPrimeSum
 
 
