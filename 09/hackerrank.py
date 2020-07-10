@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """If there are any Pythagorean triples for which a**2 + b**2 = c**2 and a + b + c = N, find the maximum value of abc. If there is no triple, print -1"""
-#https://projecteuler.net/problem=9
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler009/problem
+#First line is T the number of cases, followed by T lines with values of N
+#Constraints: 1 <= T <= 3000; 1 <= N <= 3000
 #April 2018
 
 import sys
@@ -27,10 +29,11 @@ def maxTriple(n):
         return max_prod
 
 def main():
-    print("Find a*b*c for pythagorean triplet where a+b+c= ", end="")
-    n = int(input().strip())
-    result = maxTriple(n)
-    print(result)
+    t = int(input().strip())
+    for a0 in range(t):
+        n = int(input().strip())
+        result = maxTriple(n)
+        print(result)
 
 if __name__ == "__main__":
     main()
