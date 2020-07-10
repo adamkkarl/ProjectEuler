@@ -18,7 +18,7 @@ def fib(n1, n2, maximum):
 def main():
     print("Sum even Fibonacci numbers below: ", end="")
     n = int(input().strip())
-    print(str(fib(1, 1, n)))
+    print("Sum = %d" % (fib(1, 1, n)))
 
 
 if __name__ == "__main__":
