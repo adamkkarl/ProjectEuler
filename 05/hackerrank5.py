@@ -2,7 +2,8 @@
 
 __author__ = "Adam Karl"
 """What us the smallest positive number that is evenly divisible by all numbers from 1 to N"""
-#https://projecteuler.net/problem=5
+#First line has T the number of test cases, followed by T lines each with N values
+#Constraints: 1 <= T <= 10; 1 <= N <= 40
 #April 2018
 
 import sys
@@ -19,10 +20,11 @@ def smallestMultiple(n):
         return int(round(product))
 
 def main():
-    print("Find the smallest number divisible by all numbers 1 to: ", end="")
-    n = int(input().strip())
-    result = smallestMultiple(n)
-    print(result)
+    t = int(input().strip())
+    for a0 in range(t):
+        n = int(input().strip())
+        result = smallestMultiple(n)
+        print(result)
 
 if __name__ == "__main__":
     main()
