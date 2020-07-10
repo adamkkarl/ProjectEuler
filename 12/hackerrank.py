@@ -3,7 +3,9 @@
 __author__ = "Adam Karl"
 """Triangle numbers are formed by adding all natural numbers up to a maximum. i.e. the Nth
 natural number is 1+2+...+N. What is the first triangle number to have over N divisors"""
-#https://projecteuler.net/problem=12
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler012/problem
+#first line t is the numebr of test cases, followed by t lines of N values
+#Constraints: 1 <= T <= 10; 1 <= N <= 1000
 #April 2018
 
 
@@ -50,23 +52,25 @@ def main():
     divisors = [0,1,2]
     length = 3
     
-    print("Find the first triangular number with over ___ divisors: ", end="")
-    n = int(input())
-    found = False
-    index = 1
-    while index < length and not found: #first check if it's already in our list of triangles
-        if divisors[index] > n: #found our answer
-            print(triangles[index])
-            found = True
-        index += 1
-    
-    while not found: #need to add to triangles/divisors
-        triangles.append(triangles[-1] + length)
-        divisors.append(findDivisors(triangles[-1]))
-        length += 1
-        if divisors[-1] > n:
-            print(triangles[-1])
-            found = True
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        
+        found = False
+        index = 1
+        while index < length and not found: #first check if it's already in our list of triangles
+            if divisors[index] > n: #found our answer
+                print(triangles[index])
+                found = True
+            index += 1
+        
+        while not found: #need to add to triangles/divisors
+            triangles.append(triangles[-1] + length)
+            divisors.append(findDivisors(triangles[-1]))
+            length += 1
+            if divisors[-1] > n:
+                print(triangles[-1])
+                found = True
 
 if __name__ == "__main__":
     main()
