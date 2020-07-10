@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """"find the max product of 4 numbers in a row in a 20x20 grid"""
-#https://projecteuler.net/problem=11
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler011/submissions/code/1306803013
+#input is 20 lines each of 20 integers
+#Constraints: 0 <= each integer <= 100
 #April 2018
 
 #NOTE: This iteration doesn't accept input, just solves the fed-in grid
@@ -67,7 +69,6 @@ def down(x, y, grid):
 
 def main():
     global grid
-    print("Finding greatest product of 4 adjacent numbers...")
 
     #NOTE: uncomment to feed in own input
     #for grid_i in range(20):
@@ -97,7 +98,7 @@ def main():
             test = down(x, y, grid)
             if test > max_prod:
                 max_prod = test
-    print("Greatest product = %d" % max_prod)
+    print(str(max_prod))
 
 if __name__ == "__main__":
     main()
