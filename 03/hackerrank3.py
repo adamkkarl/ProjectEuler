@@ -2,11 +2,14 @@
 
 __author__ = "Adam Karl"
 """Find the largest prime factor of given number N"""
+#First line T is number of test cases, followed by T lines of N values
+#Constraints: 1 <= T <= 10; 10 <= N <= 10**12
 #https://www.hackerrank.com/contests/projecteuler/challenges/euler003/problem
 #Solved April 2018
 
 import sys
 from math import sqrt
+
 
     
 def largestFactor(n):
@@ -31,9 +34,10 @@ def largestFactor(n):
     return largest
 
 def main():
-    print("Enter number to find largest prime factor of: ", end="")
-    n = int(input().strip())
-    print("%d's largest prime factor is %d" % (n,largestFactor(n)))
+    t = int(input().strip())
+    for a0 in range(t):
+        n = int(input().strip())
+        print(largestFactor(n))
 
 if __name__ == "__main__":
     main()
