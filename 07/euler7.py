@@ -2,9 +2,7 @@
 
 __author__ = "Adam Karl"
 """What is the Nth prime number"""
-#https://www.hackerrank.com/contests/projecteuler/challenges/euler008
-#First line has T the number of test cases, followed by T lines with values for N
-#Constraints: 1 <= T <= 1000; 1 <= N <= 10 000
+#https://projecteuler.net/problem=7
 #April 2018
 
 import sys
@@ -26,18 +24,17 @@ def isPrime(n):
 
 
 def main():
-    t = int(input().strip())
-    for a0 in range(t):
-        n = int(input().strip())
-        if n <= len(primes):
-            print(str(primes[n-1]))
-        else:
-            testPrime = primes[-1] + 2
-            while n != len(primes):
-                if isPrime(testPrime):
-                    primes.append(testPrime)
-                testPrime += 2
-            print(str(primes[n-1]))
+    print("Find the Nth prime number. N = ", end="")
+    n = int(input().strip())
+    if n <= len(primes):
+        print(str(primes[n-1]))
+    else:
+        testPrime = primes[-1] + 2
+        while n != len(primes):
+            if isPrime(testPrime):
+                primes.append(testPrime)
+            testPrime += 2
+        print(str(primes[n-1]))
 
 if __name__ == "__main__":
     main()
