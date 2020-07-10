@@ -5,7 +5,8 @@ __author__ = "Adam Karl"
 if n is even, divide it by 2
 if n is odd, triple it and add 1
 given N, which number less than or equal to N has the longest chain before hitting 1?"""
-#https://projecteuler.net/problem=14
+#first line t number of test cases, then t lines of values for N
+#Constraints: 1 <= T <= 10**4; 1 <= N <= 5 * 10**6
 #April 2018
 
 MAXIMUM = 5000000 + 1 #actually 1 more than the maximum (5 million here)
@@ -57,11 +58,12 @@ def populateAnswers():
         answers[i] = max_index
         
 def main():
-    print("Which number under __ produces the longest collatz sequence? ", end="")
-    n = int(input())
     populateCollatz()
     populateAnswers()
-    print("%d produces the longest sequence" % answers[n])
+    a0 = int(input())
+    for i in range(a0):
+        n = int(input())
+        print(answers[n])
 
 if __name__ == "__main__":
     main()
