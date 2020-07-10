@@ -1,9 +1,7 @@
 #!/bin/python3
 
 __author__ = "Adam Karl"
-#https://www.hackerrank.com/contests/projecteuler/challenges/euler002/problem
-#For T values of N, find the sum of all even Fibonacci numbers less than or equal to N
-#Constraints: 1 <= T <= 10**5; 10 <= N <= 4 * 10**16
+#https://projecteuler.net/problem=2
 #April 2018
 
 import sys
@@ -18,10 +16,9 @@ def fib(n1, n2, maximum):
     return fib(n2, new, maximum)
     
 def main():
-    t = int(input().strip())
-    for _ in range(t):
-        n = int(input().strip())
-        print(str(fib(1, 1, n)))
+    print("Sum even Fibonacci numbers below: ", end="")
+    n = int(input().strip())
+    print(str(fib(1, 1, n)))
 
 
 if __name__ == "__main__":
