@@ -1,10 +1,6 @@
-#!/bin/python3
+The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
 
-__author__ = "Adam Karl"
-"""Find the greatest product of K consecutive digits in the N digit number"""
-#https://projecteuler.net/problem=8
-
-largeNum = """73167176531330624919225119674426574742355349194934
+73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
 85861560789112949495459501737958331952853208805511
 12540698747158523863050715693290963295227443043557
@@ -23,24 +19,6 @@ largeNum = """73167176531330624919225119674426574742355349194934
 07198403850962455444362981230987879927244284909188
 84580156166097919133875499200524063689912560717606
 05886116467109405077541002256983155200055935729725
-71636269561882670428252483600823257530420752963450""".replace("\n", "")
+71636269561882670428252483600823257530420752963450
 
-def largestProductInSeries(k, n):
-    max_prod = 0
-    for start in range(len(n)-k):
-        product = 1
-        for index in range(k):
-            product *= int(n[start+index])
-        if product > max_prod:
-            max_prod = product
-    return max_prod
-
-
-def main():
-    print("Find the greatest product of K consecutive digits. K = ", end="")
-    k = int(input())
-    
-    print("Largest product is %d" % largestProductInSeries(k, largeNum))
-
-if __name__ == "__main__":
-    main()
+Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
