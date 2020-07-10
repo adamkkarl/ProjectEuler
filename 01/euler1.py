@@ -3,6 +3,7 @@
 import sys
 
 #Problem 1 Project Euler Solution
+#https://projecteuler.net/problem=1
 
 def sum_multiples_of_k(n, k):
     """Finds the sum of all multiples of k that are less than n"""
