@@ -5,13 +5,14 @@ __author__ = "Adam Karl"
 #https://projecteuler.net/problem=15
 #April 2018
 
-memo = [[0 for x in range(500)] for y in range(500)] #500x500 grid for storing 
 
-def generateMemoization():
+def generateMemoization(n):
     """Fill the grid with number of routes for i by j grid when i <= j.
     It is only necessary to fill half since 5 by 6 has the same routes as 6 by 5"""
+    global memo
+    memo = [[0 for x in range(n)] for y in range(n)] #n x n grid for storing 
     memo[0][0] = 2 #for 1 by 1 grid
-    for j in range(1, 500): #1 to 499 inclusive
+    for j in range(1, n): #1 to n-1 inclusive
         for i in range(j+1): #0 to j inclusive
            
             ans = 0
@@ -26,17 +27,12 @@ def generateMemoization():
             memo[i][j] = ans
                 
 def main():
-    print("Number of rows: ", end="")
+    print("Number of rows and cols: ", end="")
     n = int(input())
-    print("Number of columns: ", end="")
-    m = int(input())
-    generateMemoization()
-    a = 0
-    if n <= m:
-        a = memo[n-1][m-1]
-    else:
-        a = memo[m-1][n-1]
+    generateMemoization(n)
+    a = memo[n-1][n-1]
     print("%d routes" % a)
+
 
 if __name__ == "__main__":
     main()
