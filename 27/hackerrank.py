@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """Find the coefficients a and b to n**2 + an + b that produce the maximum number of primes for n=0,1,2,... such that abs(a) and abs(b) <= N"""
-#https://projecteuler.net/problem=27
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler027/problem
+#First line contains integer N
+#Constraints: 42 <= N <= 2000
 
 primesMemo = []
 
@@ -94,14 +96,12 @@ def calculateMaxPrimes(N):
 
 def main():
     global primesMemo
-    print("a and b must be less than: ", end="")
-    N = int(input())
-    print("Finding the product of coefficients a and b for the quadratic expression that produces the max number of primes for consecutive values of n, starting with n=0.")
     primesMemo = generatePrimes(50000)
+    N = int(input())
     
     resultA, resultB = calculateMaxPrimes(N)
-    print("n^2 + %dn + %d" % (resultA, resultB))
-    print("product = %d" % (resultA*resultB))
+    print(resultA, end=" ")
+    print(resultB)
 
 if __name__ == "__main__":
     main()
