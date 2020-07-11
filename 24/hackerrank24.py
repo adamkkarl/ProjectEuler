@@ -1,8 +1,10 @@
 #!/bin/python3
 
 __author__ = "Adam Karl"
-"""What is the Nth lexiographic permutation of 0123456789"""
-#https://projecteuler.net/problem=24
+"""What is the Nth lexiographic permutation of abcdefghijklm"""
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler024/problem
+#first line T number of test cases, followed by T lines of N values
+#constraints: 1 <= T <= 1000; 1 <= N <= 13!
 
 factorials = []
 
@@ -38,14 +40,13 @@ def printChars(letters, n):
 
 
 def main():
-    chars = ['0','1','2','3','4','5','6','7','8','9']
-
-    print("Find the nth permutation of 0123456789. n = ", end="")
-    n = int(input())
-
     generateFactorials()
-    printChars(chars, n)
-    print()
+    t = int(input())
+    for _d in range(t):
+        letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m']
+        n = int(input()) 
+        printChars(letters, n)
+        print()
     
 
 if __name__ == "__main__":
