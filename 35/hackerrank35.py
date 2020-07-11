@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """197 is a circular prime since 197, 971, and 719 are all prime. Find the sum of all circular primes below N"""
-#https://projecteuler.net/problem=35
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler035/problem
+#Input: N
+#Constraints: 10 <= N <= 10**6
 
 isPrime = []
 
@@ -36,8 +38,8 @@ def rotate(i, length):
     return ans
 
 def circPrimesBelowN(n):
-    """Given integer n, return the number of all circular primes below n"""
-    circs = 0
+    """Given integer n, return the sum of all circular primes below n"""
+    circ_sum = 0
     for i in range(2, n):
         if isPrime[i] == 1:
             length = len(str(i))
@@ -48,15 +50,14 @@ def circPrimesBelowN(n):
                     isCirc = False
                 nextComb = rotate(nextComb, length)
             if isCirc:
-                circs += 1
-    return circs
+                circ_sum += i
+    return circ_sum
 
 def main():
-    print("Find circular primes below: ", end="")
     n = int(input())
     generatePrimes(n)
     result = circPrimesBelowN(n)
-    print("There are %d circular primes below %d" % (result, n))
+    print(result)
 
 if __name__ == "__main__":
     main()
