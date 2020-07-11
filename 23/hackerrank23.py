@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """Given a number N, print "YES" if it can be expressed as a sum of two abundant numbers, otherwise print 'NO' """
-#https://projecteuler.net/problem=23
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler023
+#First line T has number of test cases, followed by T lines of N values
+#Constraints: 1 <= T <= 100; 0 <= N <= 10 000
 
 from math import sqrt, ceil
 
@@ -24,7 +26,7 @@ def isAbundant(n):
 
 def generateAbundants():
     """Generate list of abundant numbers < 28123"""
-    for testAbundant in range(1, 28124):
+    for testAbundant in range(1, 28123):
         if isAbundant(testAbundant):
             abundants.append(testAbundant)
     abundants.sort()
@@ -53,16 +55,15 @@ def canBeWritten(n):
 
 
 def main():
-    print("Summing all positive integers that cannot be written as the sum of two abundant numbers")
-
     generateAbundants()
-    
-    sum = 0
-    for i in range(1, 28124): #all numbers >28123 can be written as sum of 2 abundant #s
-        if canBeWritten(i):
-            sum += i
-    print("Sum = %d" % sum)
 
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        if canBeWritten(n):
+            print("YES")
+        else:
+            print("NO")
 
 if __name__ == "__main__":
     main()
