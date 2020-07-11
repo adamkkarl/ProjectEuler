@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """Find the smallest value d < N such that 1/d contains the longest recurring cycle in its decimal"""
-#https://projecteuler.net/problem=26
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler026/problem
+#first line T number of test cases, followed by T lines of N values
+#Constraints: 1 <= T <= 1000; 4 <= N <= 10 000 
 
 from math import floor
 
@@ -68,13 +70,12 @@ def findCyclePeriod(p):
         period += 1
 
 def main():
-    print("Find the value of d < 1000 for which 1/d contains the longest recurring cycle. d = ", end="")
-    n = int(input())
-
     generatePrimes(MAXIMUM)
     generateCycles(MAXIMUM)
-    
-    print("1/%d creates the longest cycle" % longestCycle[n-1])#-1 since we want d < N
+    t = int(input())
+    for a0 in range(t):
+        n = int(input())
+        print(longestCycle[n-1])#-1 since we want d < N
         
 if __name__ == "__main__":
     main()
