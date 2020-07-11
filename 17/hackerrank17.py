@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """Given a number, write it to words"""
-#https://projecteuler.net/problem=17
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler017/problem
+#first line T the number of test cases, followed by T lines of N values
+#Constraints: 1 <= T <= 10; 0 <= N <= 10**2
 #April 2018
 
 
@@ -74,8 +76,6 @@ def parseThreeDigits(m, n, p):
     s = parseOneDigit(m)
     if s != "":
         s += "Hundred "
-        if (n>0 or p>0):
-            s += "and "
     s += parseTwoDigits(n,p)
     return s
     
@@ -107,26 +107,16 @@ def parseWholeNumber(arr):
             arr = arr[:-3]
     return string
 
-def lettersInString(s):
-    """return the number of non-whitespace or hyphen characters in a string"""
-    ret = 0
-    for c in s:
-        if (c!=' ' and c!=' '):
-            ret += 1
-    return ret
-
 
 def main():
-    print("Add the characters of numbers 1 through: ", end="")
-    max = int(input())
-    sum = 0
-    for i in range(1, max + 1):
+    t = int(input())
+    for a0 in range(t):
+        s = input()
         digits = []
-        for d in str(i):
+        for d in s:
             digits.append(int(d))
         word = parseWholeNumber(digits)
-        sum += lettersInString(word)
-    print("%d characters" % sum)
+        print(word)
 
 if __name__ == "__main__":
     main()
