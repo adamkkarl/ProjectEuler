@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """Find the sum of all products whose multiplicand/multiplier/product can be written as 1 through N  pandigital"""
-#https://projecteuler.net/problem=32
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler032/problem
+#Input: N
+#Constraints: 4 <= N <= 9
 
 from itertools import permutations
 
@@ -25,9 +27,9 @@ def sumOfPandigitals(n):
     return sum(products)
             
 def main():
-    print("Finding the sum of all products whose multiplier/multiplicant/product can be written as 1-9 pandigital")
-    result = sumOfPandigitals(9)
-    print("Sum = %d" % result)
+    n = int(input().strip())
+    result = sumOfPandigitals(n)
+    print(result)
 
 if __name__ == "__main__":
     main()
