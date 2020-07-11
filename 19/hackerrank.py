@@ -2,7 +2,8 @@
 
 __author__ = "Adam Karl"
 """Count the number of Sundays that land on the 1st of the month between two dates"""
-#https://projecteuler.net/problem=19
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler019/problem
+#First line T the number of test cases
 #y1 m1 d1 for start date
 #y2 m2 d2 for end date
 #Constraints: 1 <= T <= 100; 1900 <= y1 <= 10**16; y1 <= y2 <= (y1+1000); dates are valid
@@ -58,24 +59,23 @@ def ZellerDayOfWeek(input_date):
     
 
 def main():
-    #startDate = list(map(int, input().split()))
-    #endDate = list(map(int, input().split()))
-    print("Finding number of sundays from 1 Jan 1901 to 31 Dec 2000")
-    startDate = [1901, 1, 1]
-    endDate = [2000, 12, 31]
-    
-    
-    num1stSundays = 0
-    startDate = findFirstOfMonth(startDate)
-    while isBefore(startDate, endDate):
-        if ZellerDayOfWeek(startDate) == 1:
-            #print(startDate)
-            num1stSundays += 1
-        startDate[1] += 1
-        if startDate[1] > 12:
-            startDate[1] = 1
-            startDate[0] += 1
-    print("Num Sumdays = %d" % num1stSundays)
+    t = int(input())
+    for a0 in range(t):
+        startDate = list(map(int, input().split()))
+        endDate = list(map(int, input().split()))
+        
+        
+        num1stSundays = 0
+        startDate = findFirstOfMonth(startDate)
+        while isBefore(startDate, endDate):
+            if ZellerDayOfWeek(startDate) == 1:
+                #print(startDate)
+                num1stSundays += 1
+            startDate[1] += 1
+            if startDate[1] > 12:
+                startDate[1] = 1
+                startDate[0] += 1
+        print(num1stSundays)
 
 if __name__ == "__main__":
     main()
