@@ -8,9 +8,9 @@ given N, which number less than or equal to N has the longest chain before hitti
 #https://projecteuler.net/problem=14
 #April 2018
 
-MAXIMUM = 5000000 + 1 #actually 1 more than the maximum (5 million here)
-steps = [None] * MAXIMUM
-answers = [0] * MAXIMUM
+MAXIMUM = 0
+steps = []
+answers = []
 
 def update(n):
     """Update the array  so that now has at least an answer for key=n"""
@@ -36,10 +36,14 @@ def update(n):
     return s
         
 def populateCollatz():
-    """populates collatz steps array up to n=5 000 000"""
+    """populates collatz steps array up to n"""
+    global steps
+    global answers
+    steps = [None]*(MAXIMUM)
+    answers = [0]*(MAXIMUM)
     steps[0] = 1
     steps[1] = 0
-    for i in range(1,MAXIMUM):
+    for i in range(1, MAXIMUM):
         if steps[i] == None:
             update(i)
             
@@ -57,11 +61,12 @@ def populateAnswers():
         answers[i] = max_index
         
 def main():
+    global MAXIMUM
     print("Which number under __ produces the longest collatz sequence? ", end="")
-    n = int(input())
+    MAXIMUM = int(input()) + 1
     populateCollatz()
     populateAnswers()
-    print("%d produces the longest sequence" % answers[n])
+    print("%d produces the longest sequence" % answers[MAXIMUM-1])
 
 if __name__ == "__main__":
     main()
