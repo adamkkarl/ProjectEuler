@@ -1,0 +1,7 @@
+# general
+*.swp
+
+# python
+__pycache__/
+*.py[cod]
+*$py.class
