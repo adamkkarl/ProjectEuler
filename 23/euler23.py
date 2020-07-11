@@ -1,12 +1,13 @@
 #!/bin/python3
 
 __author__ = "Adam Karl"
-"""Given a number N, print "YES" if it can be expressed as a sum of two abundant numbers, otherwise print 'NO' """
+"""Find the sum of all positive integers which cannot be written as the sum of two abundant numbers"""
 #https://projecteuler.net/problem=23
 
 from math import sqrt, ceil
 
-abundants = []
+abundants = [] #used to store an ascending list of all abundant numbers < 28124
+canBeWritten = [] #[i] is true if i can be summed by 2 abundants, false otherwise
 
 def isAbundant(n):
     """Return True if n is an abundant number, False if it is not"""
@@ -23,43 +24,33 @@ def isAbundant(n):
     return False
 
 def generateAbundants():
-    """Generate list of abundant numbers < 28123"""
+    """Generate list of abundant numbers < 28124"""
     for testAbundant in range(1, 28124):
         if isAbundant(testAbundant):
             abundants.append(testAbundant)
     abundants.sort()
 
-def inAbundantsList(n):
-    """Return True if item is in list of abundants, False otherwise"""
-    for a in abundants:
-        if a == n:
-            return True
-        if a > n:
-            return False
-    return False
-        
-def canBeWritten(n):
-    """Return True if N can be written as the sum of 2 abundant numbers, False if it cannot"""
-    if n > 28123:
-        return True
-    if n < 24:
-        return False
-    for a in abundants:
-        if a > n:
-            return False
-        if inAbundantsList(n - a):
-            return True
-    return False
-
+def generateCanBeWritten():
+    """Generate list where canBeWritten[i] == true iff i can be written as a sum of 2 abundant numbers"""
+    global canBeWritten
+    canBeWritten = [False for i in range(28124)] #0 to 28123, inclusive
+    numAbundants = len(abundants)
+    for i in range(0, numAbundants-1):
+        for j in range(i+1, numAbundants):
+            val = abundants[i] + abundants[j]
+            if(val <= 28123):
+                canBeWritten[val] = True
 
 def main():
-    print("Summing all positive integers that cannot be written as the sum of two abundant numbers")
+    print("Summing all positive integers that cannot be written as the sum of two abundant numbers", flush=True)
 
     generateAbundants()
+
+    generateCanBeWritten()
     
     sum = 0
-    for i in range(1, 28124): #all numbers >28123 can be written as sum of 2 abundant #s
-        if canBeWritten(i):
+    for i in range(1, 28124): #all numbers >28123 can be written as sum of 2 abundants
+        if not canBeWritten[i]:
             sum += i
     print("Sum = %d" % sum)
 
