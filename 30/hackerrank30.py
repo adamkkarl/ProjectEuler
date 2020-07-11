@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """Find the sum of all numbers that can be written as the Nth power of their digits"""
-#https://projecteuler.net/problem=30
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler030/problem
+#first line N
+#Constraints: 3 <= N <= 6
 
 powers = [0] * 10
 
@@ -33,15 +35,14 @@ def sumOfNthDigitPowers(n):
     return result
 
 def main():
-    print("Finding the sum of all numbers that can be written as the sum of the fifth of their digits")
+    n = int(input())
     
     global powers
     for i in range(10):
-        powers[i] = pow(i,5)
+        powers[i] = pow(i,n)
     
-    #note, since 9^5 * 6 is 354294, no number above 354294 could qualify
-    result = sumOfNthDigitPowers(5)
-    print("Sum = %d" % result)
+    result = sumOfNthDigitPowers(n)
+    print(result)
 
 if __name__ == "__main__":
     main()
