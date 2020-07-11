@@ -2,7 +2,8 @@
 
 __author__ = "Adam Karl"
 """Moving only right and down, how many paths are there to the end of a N by M grid?"""
-#https://projecteuler.net/problem=15
+#T number of test cases, followed by T lines of N M values
+#Constraints: 1 <= T <= 1000; 1 <= N <= 500; 1 <= M <= 500
 #April 2018
 
 memo = [[0 for x in range(500)] for y in range(500)] #500x500 grid for storing 
@@ -26,17 +27,18 @@ def generateMemoization():
             memo[i][j] = ans
                 
 def main():
-    print("Number of rows: ", end="")
-    n = int(input())
-    print("Number of columns: ", end="")
-    m = int(input())
     generateMemoization()
-    a = 0
-    if n <= m:
-        a = memo[n-1][m-1]
-    else:
-        a = memo[m-1][n-1]
-    print("%d routes" % a)
+    t = int(input())
+    p = int(1e9 + 7)
+    for a0 in range(t):
+        n,m = input().split()
+        n,m = [int(n),int(m)]
+        a = 0
+        if n <= m:
+            a = memo[n-1][m-1]
+        else:
+            a = memo[m-1][n-1]
+        print(a % p)
 
 if __name__ == "__main__":
     main()
