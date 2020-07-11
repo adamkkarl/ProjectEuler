@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """Find the sum of all natural numbers less than N that are palindromes both in base 10 and base K"""
-#https://projecteuler.net/problem=36
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler036
+#First line has N K
+#Constraints: 10 <= N <= 10**6; 2 <= K <= 9
 
 def isPalindrome(s):
     """given a string s, recursively return True if it is a palindrome, False otherwise"""
@@ -27,10 +29,9 @@ def numPalindromes(n, k):
     return palindrome_sum
 
 def main():
-    print("Find the sum of all integers that are palindromic in base 10, base 2, and are less than: ", end="")
-    n = int(input())
-    result = numPalindromes(n, 2)
-    print("Sum = %d" % result)
+    n, k = list(map(int, input().split()))
+    result = numPalindromes(n, k)
+    print(result)
 
 if __name__ == "__main__":
     main()
