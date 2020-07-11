@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """Evaluate the sum of all amicable numbers under N"""
-#https://projecteuler.net/problem=21
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler021/problem
+#First line T number of test cases, followed by T lines of N values
+#Constraints: 1 <= T <= 1000; 1 <= N <= 100 000
 
 from math import sqrt, ceil
 
@@ -39,20 +41,20 @@ def sumOfDivisors(n):
     return my_sum
 
 def main():
-    print("Sum all amicable numbers under: ", end="")
-    n = int(input())
-
     sumOfDivisorsMemo[0] = 0 #n = 1 has sum of divisors of 0
     sumOfDivisorsMemo[1] = 1 #n = 2 has sum of divisors of 1
     generateAmicables()
     numAmicables = len(listOfAmicables)
     
-    sum_of_amicables = 0
-    index = 0
-    while index < numAmicables and listOfAmicables[index] < n:
-        sum_of_amicables += listOfAmicables[index]
-        index += 1
-    print("Sum = %d" % sum_of_amicables)
+    t = int(input())
+    for a0 in range(t):
+        n = int(input())
+        sum_of_amicables = 0
+        index = 0
+        while index < numAmicables and listOfAmicables[index] < n:
+            sum_of_amicables += listOfAmicables[index]
+            index += 1
+        print(sum_of_amicables)
                 
     
 if __name__ == "__main__":
