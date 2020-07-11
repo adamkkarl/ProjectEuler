@@ -2,7 +2,9 @@
 
 __author__ = "Adam Karl"
 """Find the sum of all truncatable primes below N that are truncatable primes from left to right and right to left"""
-#https://projecteuler.net/problem=37
+#https://www.hackerrank.com/contests/projecteuler/challenges/euler037
+#Input: N
+#Constraints: 100 <= N <= 10**6
 
 isPrime = []
 
@@ -22,7 +24,7 @@ def generatePrimes(n):
         i += 1
 
 def sumTruncPrimes(n):
-    """Given int n, return the sum of the integers less than n that are both truncatable from the left and right"""
+    """Given ints n, return the sum of the integers less than n that are both truncatable from the left and right"""
     truncPrimeSum = 0
     for i in range(10, n):
         if isPrime[i]:
@@ -46,11 +48,10 @@ def sumTruncPrimes(n):
 
 
 def main():
-    print("Finding the sum of all 11 truncatable primes")
-    max = 1000000
-    generatePrimes(max)
-    result = sumTruncPrimes(max)
-    print("Sum = %d" % result)
+    n = int(input())
+    generatePrimes(n)
+    result = sumTruncPrimes(n)
+    print(result)
 
 if __name__ == "__main__":
     main()
