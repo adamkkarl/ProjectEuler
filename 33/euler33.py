@@ -44,23 +44,30 @@ def incorrectSimplify(num, denom):
     return [digitListToInt(numList), digitListToInt(denomList), digitsCanceled]
 
 def main():
-    numeratorSum = 0
-    denominatorSum = 0
+    numeratorProd = 1
+    denominatorProd = 1
 
-    n, k = list(map(int, input().split()))
+    print("Calculating curious fractions with 2-digit numerators and demoninators", flush=True)
 
+    n=2 #2 digits
+    k=1 #cancel exactly 1 digit from num & denom
     min_numerator = pow(10, n - 1)
     max_numerator = pow(10, n)
-    for numerator in range(min_numerator, max_numerator):
-        for denominator in range(numerator + 1, max_numerator):
+    for numerator in range(min_numerator, max_numerator): #10 to 98
+        denominator = numerator+1
+        while(denominator < max_numerator): #numerator+1 to 99
             inc_num, inc_denom, test_k = incorrectSimplify(numerator, denominator)
             if test_k == k:
                 inc_num, inc_denom = simplify(inc_num, inc_denom)
                 cor_num, cor_denom = simplify(numerator, denominator)
                 if inc_num == cor_num and inc_denom == cor_denom:
-                    numeratorSum += numerator
-                    denominatorSum += denominator
-    print(numeratorSum, denominatorSum)
+                    print("%d/%d" % (numerator, denominator), end=" ", flush=True)
+                    numeratorProd *= numerator
+                    denominatorProd *= denominator
+            denominator += 1
+    print()
+    num, denom = simplify(numeratorProd, denominatorProd)
+    print("Product of curious fractions = %d/%d" % (num, denom))
 
 if __name__ == "__main__":
     main()
