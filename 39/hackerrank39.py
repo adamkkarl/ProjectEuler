@@ -8,44 +8,45 @@ __author__ = "Adam Karl"
 # 1 <= T <= 100 000
 # 12 <= N <= 5 000 000
 
-isSquare = [False for i in range(2500000)] #max perim=5m so max side < 2.5m
+#NOTES: the perimeter of a right triangle is always even
+
+roots = dict()
 numTriangles = [0 for i in range(5000001)] #numTriangles[p] has # right triangles with perimeter of p
 maxP = [0 for i in range(5000001)] #maxP[i] has the value of p that maximizes # of right triangles
 
-def generateIsSquare():
-    """isSquare[i] is True iff i is a square number"""
+#TODO euclid's method to generate pythagorean triples
+
+def generateRoots():
+    """fill roots with [a**2,a] pairs"""
     i = 1
     sq = 1
-    while(sq <= 2500000):
-        isSquare[sq] = True
+    while(i <= 2500000):
+        roots[pow(i,2)] = i
         i += 1
-        sq = pow(i,2)
-
 
 def isSquareNum(n):
     """Return if n is square or not"""
-    if(n<2500000):
-        return isSquare[n]
-    i = 1582
-    while(True):
-        if(pow(i,2 < n)):
-            i += 1
-        elif(pow(i,2) > n):
-            return False
-        elif(pow(i,2) == n):
-            return True
+    if(roots.get(n) != None):
+        return True
+    return False
+
 
 def generateNumTriangles():
     """numTriangles[i] contains the number of right triangles with perimeter=i"""
-    a = 1
-    while(a<2500000):
-        b = a
-        while(a+b < 25000000):
-            if(isSquareNum(a**2+b**2)): #if c is square number
-                c = sqrt(a**2+b**2)
-                numTriangles[a+b+c] += 1
-            b += 1
-        a += 1
+    c = 2500000 #max perimeter=5m, so max hypot=2.5m
+    c2 = pow(c,2)
+    while(c>0):
+        print(c, flush=True)
+        a = 1
+        while(a < c):
+            a2 = pow(a,2)
+            if(isSquareNum(c2-a2)): #if b is square
+                b = roots[c2-a2]
+                if(a <= b and b < c and a+b<c):
+                    numTriangles[a+b+c] += 1
+            a += 1
+        c -= 1
+        c2 = pow(c,2)
 
 def calcMaxP():
     """maxP[i] has the value of p <= i that generates the most right triangles"""
@@ -60,7 +61,8 @@ def calcMaxP():
             maxP[p] = mP
 
 def main():    
-    generateIsSquare()
+    generateRoots()
+    print(1, flush=True)
     generateNumTriangles()
     print("2", flush=True)
     calcMaxP()
