@@ -1,6 +1,6 @@
 #!/bin/python3
 
-import sys
+import sys, math
 
 #Problem 42 Project Euler Solution
 #https://projecteuler.net/problem=42
@@ -10,16 +10,11 @@ def isTriangleNum(n):
     The equation for a triangle number is:
     t = (1/2)n(n+1)"""
     n *= 2
-    v1 = 1
-    v2 = 2
-    while True:
-        if n == v1 * v2:
-            return v1
-        elif n < v1 * v2:
-            return -1
-        else:
-            v1 += 1
-            v2 += 1
+    v1 = math.floor(math.sqrt(n))
+    v2 = v1 + 1
+    if v1 * v2 == n:
+        return v1
+    return -1
 
 def main():
     t = int(input().strip())
